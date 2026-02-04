@@ -7,3 +7,5 @@ This is a test for codeleap project.
 2 - Conectando com o repositório do Github
 
 3 - Instalando o Tailwindcss + configuração de path resolver
+
+4 - Instalando o Shadcn
