@@ -1,11 +1,14 @@
 ### CodeLeap project
 
-This is a test for codeleap project.
+Usando
+- Tailwindcss
+- Shadcn
+- Vite
+- BiomeJS
 
-1 - Criação do projeto com vite seguindo a documentação
+Scripts
+# Formatar, fazer lint e organizar importações de todos os arquivos
+npx @biomejs/biome check --write
 
-2 - Conectando com o repositório do Github
 
-3 - Instalando o Tailwindcss + configuração de path resolver
 
-4 - Instalando o Shadcn
