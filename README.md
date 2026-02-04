@@ -9,6 +9,10 @@ Usando
 - zod
 - react router dom
 
+Organização
+- mvvm
+- composition pattern
+
 IDE
 - Cursor AI
 - Google Gemini
