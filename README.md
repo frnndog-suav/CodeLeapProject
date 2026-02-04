@@ -7,6 +7,7 @@ Usando
 - BiomeJS
 - react hook form
 - zod
+- react router dom
 
 IDE
 - Cursor AI

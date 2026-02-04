@@ -1,19 +1,15 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import z from "zod";
-import  { Button } from "@/components/ui/button";
-import  { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import  { Field, FieldError, FieldLabel, FieldSet } from "@/components/ui/field";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Field, FieldError, FieldLabel, FieldSet } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-
-const loginFormSchema = z.object({
-    username: z.string().min(1, "Username is invalid."),
-})
-
-type TLoginFormFields = z.infer<typeof loginFormSchema>
+import { useAppNavigation } from "@/routes/useAppNavigation";
+import { loginFormSchema, type TLoginFormFields } from "./form-schema";
 
 export default function LoginPage() {
     const {
+        reset,
         register,
         handleSubmit,
         formState: { errors, isValid },
@@ -21,10 +17,17 @@ export default function LoginPage() {
         resolver: zodResolver(loginFormSchema),
         mode: "onChange",
     });
+    const { goToHome } = useAppNavigation()
+
+    const submit = (formData: TLoginFormFields) => {
+        console.log(formData)
+        reset()
+        goToHome()
+    }
 
     return (
         <div className="w-screen h-screen bg-[#ddd] flex items-center justify-center">
-            <form onSubmit={handleSubmit((data) => console.log(data))}>
+            <form onSubmit={handleSubmit(submit)}>
                 <Card className="md:w-[500px] bg-white border border-solid border-[#ccc] gap-4">
                     <CardHeader>
                         <CardTitle className="text-xl font-bold">Welcome to CodeLeap network!</CardTitle>
