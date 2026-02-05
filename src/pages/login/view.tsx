@@ -24,7 +24,7 @@ export function LoginView({ errors, handleSubmit, isValid, register, submit, }: 
                         </FieldSet>
                     </CardContent>
                     <CardFooter className="flex justify-end">
-                        <Button variant={'blue'} disabled={!isValid} type="submit">ENTER</Button>
+                        <Button variant={'blue'} disabled={!isValid} type="submit" className="md:w-[111px]">ENTER</Button>
                     </CardFooter>
                 </Card>
             </form>
