@@ -1,3 +1,5 @@
 export default function HomePage() {
-    return <>Home page</>
+    return <div className="w-screen h-screen bg-[#ddd] flex justify-center">
+        <>HomePage</>
+    </div>
 }

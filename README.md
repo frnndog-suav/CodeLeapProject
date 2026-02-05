@@ -17,6 +17,9 @@ IDE
 - Cursor AI
 - Google Gemini
 
+versão
+- node 22.15.0
+
 Scripts
 # Formatar, fazer lint e organizar importações de todos os arquivos
 npx @biomejs/biome check --write
