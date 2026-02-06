@@ -1,6 +1,6 @@
-import { useCreateBoosterPackFeature } from "@/features/create-post";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useCreatePost } from "@/features/create-post";
 import { postCreationSchema, type TPostCreationFormFields } from "../../post-creation-schema";
 
 export function usePostCreationFormViewModel() {
@@ -13,7 +13,7 @@ export function usePostCreationFormViewModel() {
         resolver: zodResolver(postCreationSchema),
         mode: "onChange",
     });
-    const { isLoading, mutateAsync: createPost } = useCreateBoosterPackFeature()
+    const { isLoading, mutateAsync: createPost } = useCreatePost()
 
     const submit = async (formData: TPostCreationFormFields) => {
         console.log(formData)

@@ -1,5 +1,5 @@
-import { httpRequest } from "@/api/http-request";
 import { useMutation } from "@tanstack/react-query";
+import { httpRequest } from "@/api/http-request";
 
 interface IBody {
     title: string
@@ -7,7 +7,7 @@ interface IBody {
     username: string
 };
 
-export function useCreateBoosterPackFeature() {
+export function useCreatePost() {
     const { mutateAsync, isPending } = useMutation<
         IBody,
         unknown,
