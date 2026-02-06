@@ -1,9 +1,9 @@
-import type React from "react"
+import type React from "react";
 
 interface IProps {
-    children: React.ReactNode
+	children: React.ReactNode;
 }
 
 export function Content({ children }: IProps) {
-    return <div className="bg-white h-full p-6">{children}</div>
+	return <div className="bg-white h-full p-6 pb-20">{children}</div>;
 }

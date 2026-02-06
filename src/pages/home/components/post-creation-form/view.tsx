@@ -21,7 +21,7 @@ export function PostCreationFormView({ isSubmitting, errors, isValid, handleSubm
                             {...register('title')}
                             id="title"
                             type="text"
-                            placeholder="John doe"
+                            placeholder="Hello World"
                             disabled={isSubmitting}
                         />
                         <FieldError className="text-[#FF5151]">{errors.title?.message}</FieldError>
@@ -33,7 +33,7 @@ export function PostCreationFormView({ isSubmitting, errors, isValid, handleSubm
                         <Textarea
                             {...register('message')}
                             id="textarea-message"
-                            placeholder="Type your message here."
+                            placeholder="Content here"
                             className="h-[74px]"
                             disabled={isSubmitting}
                         />
