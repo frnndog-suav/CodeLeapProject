@@ -1,11 +1,10 @@
+import { useAppNavigation } from "@/routes/useAppNavigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useAppNavigation } from "@/routes/useAppNavigation";
 import { loginSchema, type TLoginFormFields } from "./login-schema";
 
 export const useLoginViewModel = () => {
     const {
-        reset,
         register,
         handleSubmit,
         formState: { errors, isValid },
@@ -17,12 +16,14 @@ export const useLoginViewModel = () => {
 
     const submit = (formData: TLoginFormFields) => {
         console.log(formData)
-        reset()
         goToHome()
     }
 
     return {
-        submit, register,
-        handleSubmit, errors, isValid
+        errors, 
+        isValid,
+        submit, 
+        register,
+        handleSubmit, 
     }
 }
