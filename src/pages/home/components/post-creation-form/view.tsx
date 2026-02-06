@@ -7,7 +7,7 @@ import type { usePostCreationFormViewModel } from "./view-model";
 
 interface IProps extends ReturnType<typeof usePostCreationFormViewModel> { }
 
-export function PostCreationFormView({ errors, isValid, handleSubmit, register, submit, }: IProps) {
+export function PostCreationFormView({ isSubmitting, errors, isValid, handleSubmit, register, submit, }: IProps) {
     return <form onSubmit={handleSubmit(submit)}>
         <Card className="w-full bg-white border border-solid border-[#ccc] gap-4">
             <CardHeader>
@@ -17,20 +17,36 @@ export function PostCreationFormView({ errors, isValid, handleSubmit, register, 
                 <FieldSet>
                     <Field className="gap-2">
                         <FieldLabel htmlFor="title">Title</FieldLabel>
-                        <Input {...register('title')} id="title" type="text" placeholder="John doe" />
+                        <Input
+                            {...register('title')}
+                            id="title"
+                            type="text"
+                            placeholder="John doe"
+                            disabled={isSubmitting}
+                        />
                         <FieldError className="text-[#FF5151]">{errors.title?.message}</FieldError>
                     </Field>
                 </FieldSet>
                 <FieldSet>
                     <Field className="gap-2">
                         <FieldLabel htmlFor="textarea-message">Message</FieldLabel>
-                        <Textarea  {...register('message')} id="textarea-message" placeholder="Type your message here." className="h-[74px]" />
+                        <Textarea
+                            {...register('message')}
+                            id="textarea-message"
+                            placeholder="Type your message here."
+                            className="h-[74px]"
+                            disabled={isSubmitting}
+                        />
                         <FieldError className="text-[#FF5151]">{errors.message?.message}</FieldError>
                     </Field>
                 </FieldSet>
             </CardContent>
             <CardFooter className="flex justify-end">
-                <Button variant={'blue'} type="submit" disabled={!isValid} className="md:w-[120px]">Create</Button>
+                <Button
+                    type="submit"
+                    variant={'blue'}
+                    disabled={!isValid || isSubmitting}
+                    className="md:w-[120px]">Create</Button>
             </CardFooter>
         </Card>
     </form>
