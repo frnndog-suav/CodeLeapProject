@@ -5,5 +5,19 @@ interface IProps {
 }
 
 export function Content({ children }: IProps) {
-	return <div className="bg-white h-full p-6 pb-20">{children}</div>;
+	return (
+		<div
+			className="
+			bg-white 
+			h-full 
+			p-6 
+			pb-20 
+			gap-6 
+			flex 
+			flex-col
+		"
+		>
+			{children}
+		</div>
+	);
 }

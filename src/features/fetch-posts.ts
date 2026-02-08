@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { httpRequest } from "@/api/http-request";
 
-const QUERY_CACHE_KEY = "@codeleap-fetch-posts";
+const CACHE_KEY = "@codeleap-fetch-posts";
 
 export const DEFAULT_ITEMS_PER_PAGE = 5;
 
 export function useFetchPosts() {
 	const { data, isError, isLoading, isFetched, isPending, isFetching } =
 		useQuery({
-			queryKey: [QUERY_CACHE_KEY],
+			queryKey: [CACHE_KEY],
 			queryFn: async () => {
 				return await httpRequest({
 					method: "GET",
@@ -27,4 +27,4 @@ export function useFetchPosts() {
 	};
 }
 
-export { QUERY_CACHE_KEY as LIST_EDITIONS_CACHE };
+export { CACHE_KEY as LIST_EDITIONS_CACHE };
