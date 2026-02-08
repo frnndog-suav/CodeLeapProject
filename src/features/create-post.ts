@@ -1,45 +1,38 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { httpRequest } from "@/api/http-request";
+import { LIST_POSTS_CACHE_KEY } from "./fetch-posts";
 
 interface IBody {
-    title: string
-    content: string
-    username: string
-};
+	title: string;
+	content: string;
+	username: string;
+}
 
 export function useCreatePost() {
-    const { mutateAsync, isPending } = useMutation<
-        IBody,
-        unknown,
-        IBody
-    >({
-        mutationFn: async (data: IBody) => {
-            await httpRequest<unknown, IBody>({
-                method: "POST",
-                url: "careers/",
-                data,
-            });
+	const queryClient = useQueryClient();
 
-            return data;
-        },
-        onSuccess: () => {
-            console.log("sucesso")
-            // await REACT_QUERY_CLIENT.invalidateQueries({
-            //     queryKey: [LIST_BOOSTER_PACKS_CACHE],
-            //     exact: false,
-            //     refetchType: "all",
-            // });
+	const { mutateAsync, isPending } = useMutation<IBody, unknown, IBody>({
+		mutationFn: async (data: IBody) => {
+			await httpRequest<unknown, IBody>({
+				method: "POST",
+				url: "careers/",
+				data,
+			});
 
-            // await REACT_QUERY_CLIENT.invalidateQueries({
-            //     queryKey: [GET_BOOSTER_PACK_CACHE],
-            //     exact: false,
-            //     refetchType: "all",
-            // });
-        },
-        onError: () => {
-            console.log("error")
-        }
-    });
+			return data;
+		},
+		onSuccess: () => {
+			console.log("sucesso");
+			queryClient.invalidateQueries({
+				queryKey: [LIST_POSTS_CACHE_KEY],
+				exact: false,
+				refetchType: "all",
+			});
+		},
+		onError: () => {
+			console.log("error");
+		},
+	});
 
-    return { isLoading: isPending, mutateAsync };
+	return { isLoading: isPending, mutateAsync };
 }

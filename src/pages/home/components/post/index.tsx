@@ -53,7 +53,7 @@ export function Post({ createdAt, message, title, username }: IProps) {
 			</div>
 			<CardContent className="flex flex-col mt-6 gap-2">
 				<div className="flex justify-between items-center">
-					<p className="font-bold text-[#777777]">{username}</p>
+					<p className="font-bold text-[#777777]">{`@${username}`}</p>
 					<p className="text-[#777777]">{createdAt}</p>
 				</div>
 				<p className="whitespace-pre-wrap">{message}</p>
